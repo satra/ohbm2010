@@ -698,9 +698,9 @@
         \begin{scope}[color=borderColor]%
         \ifthenelse{\equal{\baposter@boxshade}{none}}{%
         }{
-          \fill[box colors,rc] (\baposter@box@name tnw) -- (\baposter@box@name sw) -- (\baposter@box@name se) -- (\baposter@box@name tne);%
+          \fill[box colors] (\baposter@box@name tnw) -- (\baposter@box@name sw) -- (\baposter@box@name se) -- (\baposter@box@name tne);%
         }
-        \draw[color=borderColor,rc] (\baposter@box@name tnw) -- (\baposter@box@name sw) -- (\baposter@box@name se) -- (\baposter@box@name tne);%
+        \draw[color=borderColor] (\baposter@box@name tnw) -- (\baposter@box@name sw) -- (\baposter@box@name se) -- (\baposter@box@name tne);%
         \end{scope}%
       }{\ifthenelse{\equal{\baposter@textborder}{rounded}}  {%
         \ifthenelse{\equal{\baposter@boxshade}{none}}{%
