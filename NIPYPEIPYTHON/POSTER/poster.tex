@@ -178,23 +178,22 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Introduction}{name=introduction,column=0,row=0}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-We present distributed execution of neuroimaging analysis pipelines that
-the open source Nipype \cite{ghos.python-based.10} project has
-developed by integrating with IPython's \cite{pere.ipython.07}
-parallel computing facilities. Today we face an explosion in the size
-and complexity of neuroimaging datasets, whose analysis requires not
-only sophisticated algorithms but computational infrastructure to
-support their use with ease, efficiency, reliability and
-reproducibility. While existing analysis packages provide excellent
-tools, they often constrain users to specific workflows and
-environments. Furthermore, very few of the available neuroimaging tools
-take advantage of the growing number of parallel hardware configurations
-(multicore, clusters, clouds and supercomputers) or integration with
-neuroimaging databases. By using IPython's high-level facilities for
-distributed computing, Nipype can optimally execute any parallelizable
-analysis pipeline. 
- \vspace{0.3em}
- }
+    We present distributed execution of neuroimaging analysis pipelines
+    that the open source Nipype \cite{ghos.python-based.10} project has
+    developed by integrating with IPython's \cite{pere.ipython.07}
+    parallel computing facilities. Today we face an explosion in the
+    size and complexity of neuroimaging datasets, whose analysis
+    requires not only sophisticated algorithms but computational
+    infrastructure to support their use with ease, efficiency,
+    reliability and reproducibility. While existing analysis packages
+    provide excellent tools, they often constrain users to specific
+    workflows and environments. Furthermore, very few of the available
+    neuroimaging tools take advantage of the growing number of parallel
+    hardware configurations (multicore, clusters, clouds and
+    supercomputers) or integration with neuroimaging databases. By using
+    IPython's high-level facilities for distributed computing, Nipype
+    can optimally execute any parallelizable analysis pipeline.
+    \vspace{0.3em} }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Features}{name=features,column=0,below=introduction}{
@@ -244,8 +243,17 @@ analysis pipeline.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{IPython}{name=ipython,column=2,row=0}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    IPython summary here especially with respect to parallel execution
- \vspace{0.5em}
+    IPython SUMMARY here.
+
+    The goal of IPython is to create a comprehensive environment for
+    interactive and exploratory computing. To support, this goal,
+    IPython has two main components:
+
+    \begin{itemize}
+      \item An enhanced interactive Python shell.
+      \item An architecture for interactive parallel computing.  
+    \end{itemize}
+\vspace{0.5em}
   }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -285,21 +293,20 @@ analysis pipeline.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Conclusion}{name=conclusion,column=0,span=1,below=features,above=references}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-We have developed a practical integration of IPython's parallel and
-distributed computing capabilities into Nipype's pipeline execution
-machinery. This provides an easy to use system for parallelizing
-analysis tasks with minimal effort and without the requirement for
-explicit parallel programming. Currently, one can execute SPM, FSL and a
-variety of FreeSurfer functions in parallel using this system on variety
-of different distributed computing architectures as long as they share a
-common file-system and have all underlying tools installed. Future
-improvements will focus on moving the DAG scheduler to IPython itself
-for efficient load balancing, file-system independent execution,
-selective execution of nodes on compatible systems (e.g., run FSL and
-FreeSurfer nodes only on unix systems in a mixed operating system
-cluster), interfacing with cloud services and support of more
-neuroimaging analysis packages.
- }
+    We have developed a practical integration of IPython's parallel and
+    distributed computing capabilities into Nipype's pipeline execution
+    machinery. This provides an easy to use system for parallelizing
+    analysis tasks with minimal effort and without the requirement for
+    explicit parallel programming. Currently, one can execute SPM, FSL
+    and a variety of FreeSurfer functions in parallel using this system
+    on variety of different distributed computing architectures as long
+    as they share a common file-system and have all underlying tools
+    installed. Future improvements will focus on moving the DAG
+    scheduler to IPython itself for efficient load balancing,
+    file-system independent execution, selective execution of nodes on
+    compatible systems (e.g., run FSL and FreeSurfer nodes only on unix
+    systems in a mixed operating system cluster), interfacing with cloud
+    services and support of more neuroimaging analysis packages.  }
 
 \end{poster}%
 \end{document}
