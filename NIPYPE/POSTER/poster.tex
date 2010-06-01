@@ -205,7 +205,7 @@
  }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{Problems}{name=problems,column=0,below=introduction}{
+  \headerbox{Problems addressed}{name=problems,column=0,below=introduction}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \begin{list}{\labelitemi}{\leftmargin=1em}
       \compresslist
@@ -362,7 +362,7 @@ preproc.run()
       \item Example: SPM fMRI workflow on 69 subjects 
         \begin{list}{\labelitemi}{\leftmargin=2em}
           \compresslist
-          \item Typical runtime: 3 days.
+          \item Serial runtime: 69 h
           \item Nipype runtime: 1 h 40 min on 40 cores.  
         \end{list}
     \end{list}
@@ -391,19 +391,18 @@ preproc.run()
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{Sotware dependencies}{name=software,column=0,above=bottom}{
+  \headerbox{Software dependencies}{name=software,column=0,above=bottom}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \smaller
+    \footnotesize
    \begin{tabular}{rl}
-     Nipy & \url{nipy.sourceforge.net}\\
-     Ipython & \url{ipython.scipy.org}\\
+     Nipy & \url{nipy.org}\\
+     IPython & \url{ipython.scipy.org}\\
      Scipy,Numpy & \url{scipy.org}\\
-     Networkx & \url{networkx.lanl.gov}\\
-     NeuroDebian & \url{neuro.debian.net}\\
+     NetworkX & \url{networkx.lanl.gov}\\
      Traits & \url{www.enthought.com}
-   \end{tabular}
-
- }
+   \end{tabular}\\
+   Also available from NeuroDebian (\url{neuro.debian.net})
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Conclusion}{name=conclusion,column=0,span=1,below=features,above=software}{
