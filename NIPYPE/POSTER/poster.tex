@@ -183,7 +183,7 @@
     %
     % A coloured circle useful as a bullet with an adjustably strong filling
     \newcommand{\colouredcircle}[1]{%
-      \tikz{\useasboundingbox (-0.2em,-0.32em) rectangle(0.2em,0.32em); \draw[draw=black,fill=baposterBGone!80!black!#1!white,line width=0.03em] (0,0) circle(0.18em);}}
+      \tikz{\useasboundingbox (-0.2em,-0.32em) rectangle(0.2em,0.32em); \draw[draw=black,fill=headerFontColor!80!black!#1!white,line width=0.03em] (0,0) circle(0.18em);}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Introduction}{name=introduction,column=0,row=0}{
@@ -196,34 +196,48 @@
     these issues by providing a uniform interface to existing
     neuroimaging software and by facilitating interaction between these
     packages within a single workflow.
-
-   \vspace{0.3em} }
+  }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Problems}{name=problems,column=0,below=introduction}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{itemize}
-\compresslist
-\item Using multiple packages
-\item Disseminating software
-\item Training users
-\item Computing efficiently
-\item Replicating methods
-\end{itemize}
- \vspace{0.3em}
-  }
+\colouredcircle{100} \textbf{Using multiple packages.} What if you wanted to leverage the
+best features from different packages.
+
+\colouredcircle{100} \textbf{Disseminating software.} As an algorithm
+developer, which package should you develop for?
+
+\colouredcircle{100} \textbf{Training users.} As a lab manager or
+imaging center, how do you train users?
+
+\colouredcircle{100} \textbf{Computing efficiently.} Can you leverage
+computer clusters for efficient computong?
+
+\colouredcircle{100} \textbf{Replicating methods.} Can you replicate
+methods described in papers? 
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Features}{name=features,column=0,below=problems}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{itemize}
-\item Parallel execution of workflows
-\item No additional coding for parallel execution
-\item Supports SPM, FSL, FreeSurfer
-\item Automatic load balancing across cluster
-\end{itemize}
- \vspace{0.3em}
-  }
+\colouredcircle{100} \textbf{Multi-package support.} Uniform
+cross-package interface (supports SPM, FSL, FreeSurfer components). 
+
+\colouredcircle{100} \textbf{Minimal programming knowledge required.} A high
+level scripting interface to design workflows intended for non-programmers.
+
+\colouredcircle{100} \textbf{Parallel execution.} No additional coding
+necessary for parallel execution of processing stages.
+
+\colouredcircle{100} \textbf{Pedagogical.} Can be used as a teaching
+tool and facilitates user training.
+ 
+\colouredcircle{100} \textbf{Well documented.} Code documentation
+becomes user documentation.
+
+\colouredcircle{100} \textbf{Shared workflows.} Workflows separate
+execution stages from data and can be shared within and across labs.
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Component Architecture Diagram}{name=cad,column=1,span=2}{
