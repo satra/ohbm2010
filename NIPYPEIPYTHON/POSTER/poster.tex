@@ -26,6 +26,9 @@
 %\usepackage{bookman}
 \usepackage{palatino}
 
+\usepackage{url}
+\usepackage{fancyvrb}
+
 \newcommand{\captionfont}{\footnotesize}
 
 \selectcolormodel{cmyk}
@@ -91,7 +94,10 @@
 \definecolor{lightestyellow}{cmyk}{0,0,0.05,0.0}
 
 \definecolor{white}{cmyk}{0,0,0,0}
+\definecolor{gray5}{cmyk}{0,0,0,0.05}
+\definecolor{gray30}{cmyk}{0,0,0,0.3}
 \definecolor{gray50}{cmyk}{0,0,0,0.5}
+\definecolor{gray90}{cmyk}{0,0,0,0.9}
 
 %%
 \typeout{Poster Starts}
@@ -112,37 +118,41 @@
   % Color style
   bgColorOne=white,
   bgColorTwo=white,
-  borderColor=gray50,
-  headerColorOne=reddishyellow,
-  headerColorTwo=reddishyellow,
-  headerFontColor=black,
-  boxColorOne=lightyellow,
-  boxColorTwo=lighteryellow,
+  borderColor=black,
+  headerColorOne=gray50,
+  headerColorTwo=gray90,
+  headerFontColor=reddishyellow,
+  boxColorOne=gray5,
+  boxColorTwo=gray5,
   % Format of textbox
-  textborder=none,
-  % Format of text header
+  textborder=none, %rectangle,
+  textfont=\sf, %Sans Serif
+ % Format of text header
   eyecatcher=no,
-  headerborder=closed,
+  headerborder=none,
   headerheight=0.08\textheight,
   headershape=rectangle,
-  headershade=plain,
+  headershade=shade-tb,
   headerfont=\Large\textsf, %Sans Serif
-  boxshade=plain,
+  boxshade=none, %shade-tb,
 %  background=shade-tb,
-  background=plain,
+  background=none,
   linewidth=2pt
   }
-  % Eye Catcher
+ % Eye Catcher
   {\includegraphics[width=1em]{nipylogo}} % No eye catcher for this poster. (eyecatcher=no above). If an eye catcher is present, the title is centered between eye-catcher and logo.
   % Title
   {\sf %Sans Serif
   %\bf% Serif
-  Distributed Neuroimaging Analysis with Nipype and IPython}
+  Distributed Neuroimaging Analysis with Nipype and IPython\vspace{0.15em}}
   % Authors
   {\sf %Sans Serif
   % Serif
   Satrajit Ghosh$^1$, Brian Granger$^2$, Fernando Perez$^3$\\
-  $^1$MIT, Cambridge, MA $^2$Cal Poly San Luis Obispo, San Luis Obispo, CA $^3$University of California, Berkeley, CA}
+  \small\sf$^1$MIT, Cambridge, MA $^2$California Polytechnic State
+  University, San Luis Obispo, CA $^3$University of California,
+  Berkeley, CA}
+
 
   % University logo
   % {% The makebox allows the title to flow into the logo, this is a hack because of the L shaped logo.
@@ -172,8 +182,10 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     %
     % A coloured circle useful as a bullet with an adjustably strong filling
-    \newcommand{\colouredcircle}[1]{%
-      \tikz{\useasboundingbox (-0.2em,-0.32em) rectangle(0.2em,0.32em); \draw[draw=black,fill=baposterBGone!80!black!#1!white,line width=0.03em] (0,0) circle(0.18em);}}
+   \newcommand{\colouredcircle}[1]{%
+      \tikz{\useasboundingbox (-0.2em,-0.32em) rectangle(0.2em,0.32em); \draw[draw=black,fill=headerFontColor!80!black!#1!white,line width=0.03em] (0,0) circle(0.18em);}}
+    \renewcommand{\labelitemi}{\colouredcircle{100}}
+    \renewcommand{\labelitemii}{\colouredcircle{50}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Introduction}{name=introduction,column=0,row=0}{
@@ -185,27 +197,27 @@
     size and complexity of neuroimaging datasets, whose analysis
     requires not only sophisticated algorithms but computational
     infrastructure to support their use with ease, efficiency,
-    reliability and reproducibility. While existing analysis packages
-    provide excellent tools, they often constrain users to specific
-    workflows and environments. Furthermore, very few of the available
-    neuroimaging tools take advantage of the growing number of parallel
-    hardware configurations (multicore, clusters, clouds and
-    supercomputers) or integration with neuroimaging databases. By using
-    IPython's high-level facilities for distributed computing, Nipype
-    can optimally execute any parallelizable analysis pipeline.
-    \vspace{0.3em} }
+    reliability and reproducibility. 
+
+    While existing analysis packages provide excellent tools, they often
+    constrain users to specific workflows and environments. Furthermore,
+    very few of the available neuroimaging tools take advantage of the
+    growing number of parallel hardware configurations (multicore,
+    clusters, clouds and supercomputers) or integration with
+    neuroimaging databases. By using IPython's high-level facilities for
+    distributed computing, Nipype can optimally execute any
+    parallelizable analysis pipeline.  \vspace{0.3em} }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Features}{name=features,column=0,below=introduction}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{itemize}
-  \compresslist
-\item Parallel execution of workflows
-\item No additional coding for parallel execution
-\item Supports SPM, FSL, FreeSurfer
-\item Automatic load balancing across cluster
-\end{itemize}
- \vspace{0.3em}
+    \begin{list}{\labelitemi}{\leftmargin=1em}
+      \compresslist
+      \item Parallel execution of workflows
+      \item No additional coding for parallel execution
+      \item Supports SPM, FSL, FreeSurfer
+      \item Automatic load balancing across cluster
+    \end{list}
   }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -261,9 +273,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Funding}{name=funding,column=1,span=2,above=bottom}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \smaller 
-  \hspace{1em}This work was supported in part by NIH grant EB ?? ... ADD
-  FUNDING INFO
+    \smaller This project was supported by NIH grants NIBIB R03 EB008673
+    (PI: Ghosh, Whitfield-Gabrieli), NIMH R01 MH081909 (PI: D'Esposito).
   }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
