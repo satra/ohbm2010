@@ -143,15 +143,14 @@
   background=none,
   linewidth=2pt
   }
-  % Eye Catcher
-  {\includegraphics[width=1em]{nipylogo}} % No eye catcher for this poster. (eyecatcher=no above). If an eye catcher is present, the title is centered between eye-catcher and logo.
-  % Title
+% Eye Catcher
+  {\includegraphics[width=3em]{nipylogo}} % No eye catcher for this poster. (eyecatcher=no above). If an eye catcher is present, the title is centered between eye-catcher and logo.
+ % Title
   {\sf %Sans Serif
   %\bf% Serif
-  Nipype: Opensource platform for unified and replicable interaction
+  Nipype: Opensource platform for unified and replicable\\ interaction
   with existing neuroimaging tools\vspace{0.15em}}
-  % Authors
-  {\sf %Sans Serif
+ {\centering\sf %Sans Serif
   % Serif
     SS Ghosh$^1$, C Burns$^2$, D Clark$^2$, K Gorgolewski$^3$, YO
     Halchenko$^4$, C Madison$^2$, R Tungaraza$^5$, KJ
@@ -161,11 +160,11 @@
 
   % University logo
   % {% The makebox allows the title to flow into the logo, this is a hack because of the L shaped logo.
-  %   \makebox[8em][r]{%
-  %     \begin{minipage}{16em}
+  %   \makebox[3em][r]{%
+  %     \begin{minipage}{3em}
   %       \hfill
   %       %\includegraphics[height=2em]{msrlogo}
-  %       \includegraphics[height=7.0em]{nipylogo}
+  %       \includegraphics[height=3em]{nipylogo}
   %     \end{minipage}
   %   }
   % }
@@ -189,6 +188,8 @@
     % A coloured circle useful as a bullet with an adjustably strong filling
     \newcommand{\colouredcircle}[1]{%
       \tikz{\useasboundingbox (-0.2em,-0.32em) rectangle(0.2em,0.32em); \draw[draw=black,fill=headerFontColor!80!black!#1!white,line width=0.03em] (0,0) circle(0.18em);}}
+   \renewcommand{\labelitemi}{\colouredcircle{100}}
+   \renewcommand{\labelitemii}{\colouredcircle{50}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Introduction}{name=introduction,column=0,row=0}{
@@ -206,42 +207,38 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Problems}{name=problems,column=0,below=introduction}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\colouredcircle{100} \hspace{0.1em}\textbf{Optimal workflows.}
-Integrating different packages is tedious. 
-
-\colouredcircle{100} \hspace{0.1em}\textbf{Developers nightmare.} No
-standard framework for disseminating tools across packages.
-
-\colouredcircle{100} \hspace{0.1em}\textbf{Knowledge distribution.} Training new
-personnel takes time.
-
-\colouredcircle{100} \hspace{0.1em}\textbf{Leveraging technology.} Many
-packages do not address computational efficiency.
-
-\colouredcircle{100} \hspace{0.1em}\textbf{Replicating research.} Method
-sections are often inadequate for replication.
+    \begin{list}{\labelitemi}{\leftmargin=1em}
+      \compresslist
+      \item \textbf{Optimal workflows.} Integrating different packages is tedious. 
+      \item \textbf{Developers nightmare.} No standard framework for
+        disseminating tools across packages.
+      \item \textbf{Knowledge distribution.} Training new personnel
+        takes time.
+      \item \textbf{Leveraging technology.} Many packages do not address
+        computational efficiency.
+      \item \textbf{Replicating research.} Method sections are often
+        inadequate for replication.  
+    \end{list}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Features}{name=features,column=0,below=problems}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\colouredcircle{100} \hspace{0.1em}\textbf{Multi-package support.} Uniform
-cross-package interface (supports SPM, FSL, FreeSurfer components). 
-
-\colouredcircle{100} \hspace{0.1em}\textbf{Minimal programming knowledge.} A high
-level scripting interface to design workflows intended for non-programmers.
-
-\colouredcircle{100} \hspace{0.1em}\textbf{Parallel execution.} No additional coding
-necessary for parallel execution of processing stages.
-
-\colouredcircle{100} \hspace{0.1em}\textbf{Pedagogical.} Can be used as a teaching
-tool and facilitates user training.
- 
-\colouredcircle{100} \hspace{0.1em}\textbf{Well documented.} Code documentation
-becomes user documentation.
-
-\colouredcircle{100} \hspace{0.1em}\textbf{Shared workflows.} Workflows separate
-execution stages from data and can be shared within and across labs.
+    \begin{list}{\labelitemi}{\leftmargin=1em}
+      \compresslist
+    \item \textbf{Multi-package support.} Uniform cross-package
+      interface (supports SPM, FSL, FreeSurfer components).
+    \item \textbf{Minimal programming knowledge.} A high level scripting
+      interface to design workflows intended for non-programmers.
+    \item \textbf{Parallel execution.} No additional coding necessary
+      for parallel execution of processing stages.
+    \item \textbf{Pedagogical.} Can be used as a teaching tool and
+      facilitates user training.
+    \item \textbf{Well documented.} Code documentation becomes user
+      documentation.
+    \item \textbf{Shared workflows.} Workflows separate execution stages
+      from data and can be shared within and across labs.  
+    \end{list}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -332,7 +329,7 @@ preproc.run()
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{Funding}{name=funding,column=1,span=2,above=bottom}{
+  \headerbox{Funding}{name=funding,column=1,above=bottom}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \smaller This project was supported by NIH grants NIBIB R03 EB008673
     (PI: Ghosh, Whitfield-Gabrieli), NIMH R01 MH081909 (PI: D'Esposito).
@@ -350,51 +347,53 @@ preproc.run()
     \draw (0.18, 0.185) node(preproc) {preproc};
     \draw (-0.125,-0.2) rectangle(0.125,0.2);
     \draw (-0.075, 0.185) node(firstlevel) {firstlevel};
+    \vspace{-2em}
  \end{tikzpicture}
- \vspace{-1em}
- }
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Parallel execution}{name=parallel,column=1,below=hierarchy}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-   \colouredcircle{100} \hspace{0.1em}Leverages IPython for distributed computation. 
-
-   \colouredcircle{100} \hspace{0.1em}Non-dependent processes can be executed in parallel.
-
-   \colouredcircle{100} \hspace{0.1em}No additional coding necessary.
-
-   \colouredcircle{100} \hspace{0.1em}Example: 
-
-   \hspace{0.5cm}\colouredcircle{100} \hspace{0.1em}SPM fMRI workflow on
-   79 subjects.
-
-   \hspace{0.5cm}\colouredcircle{100} \hspace{0.1em}Typical runtime: 3 days.
-
-   \hspace{0.5cm}\colouredcircle{100} \hspace{0.1em}Nipype runtime: 1 h 40 
-   min on 40 cores.  }
+    \begin{list}{\labelitemi}{\leftmargin=1em}
+      \compresslist
+      \item Leverages IPython for distributed computation. 
+      \item Non-dependent processes can be executed in parallel.
+      \item No additional coding necessary.
+      \item Example: SPM fMRI workflow on 69 subjects 
+        \begin{list}{\labelitemi}{\leftmargin=2em}
+          \compresslist
+          \item Typical runtime: 3 days.
+          \item Nipype runtime: 1 h 40 min on 40 cores.  
+        \end{list}
+    \end{list}
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Future plans}{name=future,column=2,below=hierarchy}{
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    
-    \colouredcircle{100} \hspace{0.1em}\textbf{More interfaces.} For
-    example, newer registration algorithms (e.g., ANTS - U. Penn, CVS -
-    MGH), integration with statistical tools in NiPy.
-
-    \colouredcircle{100} \hspace{0.1em}\textbf{Web interface.} A
-    graphical interface to define workflows.
-
-    \colouredcircle{100} \hspace{0.1em}\textbf{Workflow repository.}
-    Create a centralized location for version controlled workflows. 
-
-   \colouredcircle{100} \hspace{0.1em}\textbf{Additional modalities.}
-    Extend to PET, EEG/MEG, fNIRS.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+    \begin{list}{\labelitemi}{\leftmargin=1em}
+      \compresslist
+    \item \textbf{More interfaces.} 
+      \begin{list}{\labelitemi}{\leftmargin=2em}
+        \compresslist
+        \item Complete coverage of existing packages.
+        \item Newer registration algorithms (e.g., ANTS - U. Penn, CVS - MGH)
+        \item Integration with tools in Nipy, Dipy and Nitime.
+        \item Integrate with Slicer
+      \end{list}
+    \item \textbf{Web interface.} A graphical interface to define workflows.
+    \item \textbf{Workflow repository.} Create a centralized location
+      for version controlled workflows.
+    \item \textbf{Additional modalities.}  Extend to PET, EEG/MEG,
+      fNIRS.
+    \end{list}
 
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{Sotware sources}{name=software,column=0,above=bottom}{
+  \headerbox{Sotware dependencies}{name=software,column=0,above=bottom}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \smaller
    \begin{tabular}{rl}
      Nipy & \url{nipy.sourceforge.net}\\
      Ipython & \url{ipython.scipy.org}\\
@@ -409,24 +408,20 @@ preproc.run()
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Conclusion}{name=conclusion,column=0,span=1,below=features,above=software}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \colouredcircle{100} \hspace{0.1em}Provides an environment for
-    interactive manipulation of data through a Python interface as well
-    as for performing reproducible, distributed analysis using a
-    pipeline system.
-
-    \colouredcircle{100} \hspace{0.1em}Encourages scientific exploration
-    of different algorithms and associated parameters.
-
-    \colouredcircle{100} \hspace{0.1em}Simplifies the development of
-    workflows within and between packages.
-
-    \colouredcircle{100} \hspace{0.1em}Reduces the learning curve
-    associated with understanding the algorithms, APIs and user
-    interfaces of disparate packages.
-
+    \begin{list}{\labelitemi}{\leftmargin=1em}
+      \compresslist
+    \item Provides an environment for interactive manipulation of data
+      through a Python interface as well as for performing reproducible,
+      distributed analysis using a pipeline system.
+    \item Encourages scientific exploration of different algorithms and
+      associated parameters.
+    \item Simplifies the development of workflows within and between
+      packages.
+    \item Reduces the learning curve associated with understanding the
+      algorithms, APIs and user interfaces of disparate packages.
+    \end{list}
    \begin{tabular}{rl}
-      & \\
-      Engages the community & \textbf{C}ollaborative\\
+     Engages the community & \textbf{C}ollaborative\\
       Available for all & \textbf{O}pensource\\
       Workflows are records & \textbf{R}eproducible\\
       Minimizes redundancy & \textbf{E}fficient
