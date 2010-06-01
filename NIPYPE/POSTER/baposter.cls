@@ -679,6 +679,12 @@
       \typeout{Sidebars}%
       %% Sidebars%
       \ifthenelse  {\equal{\baposter@textborder}{none}}    {%
+        \begin{scope}%
+        \ifthenelse{\equal{\baposter@boxshade}{none}}{%
+        }{
+          \fill[box colors] (\baposter@box@name tnw) -- (\baposter@box@name sw) -- (\baposter@box@name se) -- (\baposter@box@name tne);%
+        }
+       \end{scope}%
       }{\ifthenelse{\equal{\baposter@textborder}{bars}}{%
         \begin{scope}[color=borderColor]%
           \draw (\baposter@box@name tne) -- (\baposter@box@name se);%

@@ -1,9 +1,9 @@
 BASENAME=poster
 #BASENAME=poster_landscape
+#bibtex $(BASENAME)
 
 $(BASENAME).pdf: $(BASENAME).tex 
 	pdflatex $(BASENAME)
-	bibtex $(BASENAME)
 	pdflatex $(BASENAME)
 	pdflatex $(BASENAME)
 
