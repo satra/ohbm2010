@@ -26,6 +26,9 @@
 %\usepackage{bookman}
 \usepackage{palatino}
 
+\usepackage{url}
+\usepackage{fancyvrb}
+
 \newcommand{\captionfont}{\footnotesize}
 
 \selectcolormodel{cmyk}
@@ -64,6 +67,10 @@
 \setlength{\parskip}{0pt}%
 \setlength{\parsep}{0pt}%
 }
+
+%\newenvironment{code}{\minipage{200em}\verbatim}{\endverbatim\endminipage}
+\newenvironment{code}{\verbatim}{\endverbatim}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -126,12 +133,12 @@
   textfont=\sf, %Sans Serif
  % Format of text header
   eyecatcher=no,
-  headerborder=closed,
+  headerborder=none,
   headerheight=0.08\textheight,
   headershape=rectangle,
   headershade=shade-tb,
   headerfont=\Large\textsf, %Sans Serif
-  boxshade=none,
+  boxshade=none, %shade-tb,
 %  background=shade-tb,
   background=none,
   linewidth=2pt
@@ -139,20 +146,18 @@
   % Eye Catcher
   {\includegraphics[width=1em]{nipylogo}} % No eye catcher for this poster. (eyecatcher=no above). If an eye catcher is present, the title is centered between eye-catcher and logo.
   % Title
-  {\Large\sf %Sans Serif
+  {\sf %Sans Serif
   %\bf% Serif
   Nipype: Opensource platform for unified and replicable interaction
-  with existing neuroimaging tools\vspace{0.3em}}
+  with existing neuroimaging tools\vspace{0.15em}}
   % Authors
-  {\vspace{0.3em}\sf %Sans Serif
+  {\sf %Sans Serif
   % Serif
     SS Ghosh$^1$, C Burns$^2$, D Clark$^2$, K Gorgolewski$^3$, YO
     Halchenko$^4$, C Madison$^2$, R Tungaraza$^5$, KJ
-    Millman$^2$
-    \vspace{0.1em}\normalsize\sf$^1$MIT, Cambridge, MA, USA $^2$University of
-    California, Berkeley, CA, USA $^3$University of Edinburgh, UK
-    $^4$Dartmouth College, Hanover, NH, USA $^5$University of
-    Washington, Seattle, WA, USA}
+    Millman$^2$\\
+    \small\sf$^1$MIT, Cambridge, MA, USA $^2$U. California, Berkeley, CA, USA $^3$U. Edinburgh, UK
+    $^4$Dartmouth College, Hanover, NH, USA $^5$U. Washington, Seattle, WA, USA\vspace{-0.4em}}
 
   % University logo
   % {% The makebox allows the title to flow into the logo, this is a hack because of the L shaped logo.
@@ -192,50 +197,50 @@
     to analyze their data in different ways, with different underlying
     assumptions. However, this has resulted in a heterogeneous
     collection of specialized applications without transparent
-    interoperability or a uniform operating interface. Nipype \cite{ghos.python-based.09} solves
+    interoperability or a uniform operating interface. Nipype solves
     these issues by providing a uniform interface to existing
     neuroimaging software and by facilitating interaction between these
     packages within a single workflow.
-  }
+ }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Problems}{name=problems,column=0,below=introduction}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\colouredcircle{100} \textbf{Using multiple packages.} What if you wanted to leverage the
-best features from different packages.
+\colouredcircle{100} \hspace{0.1em}\textbf{Optimal workflows.}
+Integrating different packages is tedious. 
 
-\colouredcircle{100} \textbf{Disseminating software.} As an algorithm
-developer, which package should you develop for?
+\colouredcircle{100} \hspace{0.1em}\textbf{Developers nightmare.} No
+standard framework for disseminating tools across packages.
 
-\colouredcircle{100} \textbf{Training users.} As a lab manager or
-imaging center, how do you train users?
+\colouredcircle{100} \hspace{0.1em}\textbf{Knowledge distribution.} Training new
+personnel takes time.
 
-\colouredcircle{100} \textbf{Computing efficiently.} Can you leverage
-computer clusters for efficient computong?
+\colouredcircle{100} \hspace{0.1em}\textbf{Leveraging technology.} Many
+packages do not address computational efficiency.
 
-\colouredcircle{100} \textbf{Replicating methods.} Can you replicate
-methods described in papers? 
+\colouredcircle{100} \hspace{0.1em}\textbf{Replicating research.} Method
+sections are often inadequate for replication.
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Features}{name=features,column=0,below=problems}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\colouredcircle{100} \textbf{Multi-package support.} Uniform
+\colouredcircle{100} \hspace{0.1em}\textbf{Multi-package support.} Uniform
 cross-package interface (supports SPM, FSL, FreeSurfer components). 
 
-\colouredcircle{100} \textbf{Minimal programming knowledge required.} A high
+\colouredcircle{100} \hspace{0.1em}\textbf{Minimal programming knowledge.} A high
 level scripting interface to design workflows intended for non-programmers.
 
-\colouredcircle{100} \textbf{Parallel execution.} No additional coding
+\colouredcircle{100} \hspace{0.1em}\textbf{Parallel execution.} No additional coding
 necessary for parallel execution of processing stages.
 
-\colouredcircle{100} \textbf{Pedagogical.} Can be used as a teaching
+\colouredcircle{100} \hspace{0.1em}\textbf{Pedagogical.} Can be used as a teaching
 tool and facilitates user training.
  
-\colouredcircle{100} \textbf{Well documented.} Code documentation
+\colouredcircle{100} \hspace{0.1em}\textbf{Well documented.} Code documentation
 becomes user documentation.
 
-\colouredcircle{100} \textbf{Shared workflows.} Workflows separate
+\colouredcircle{100} \hspace{0.1em}\textbf{Shared workflows.} Workflows separate
 execution stages from data and can be shared within and across labs.
 }
 
@@ -248,56 +253,185 @@ execution stages from data and can be shared within and across labs.
  \end{tikzpicture}
  }
 
+\begin{SaveVerbatim}{InterfaceVerb}
+In [5]: from nipype.interfaces.fsl import BET
+In [6]: BET.help()
+
+Inputs
+------
+Mandatory:
+ in_file: input file to skull strip
+
+Optional:
+ args: Additional parameters to the command
+ environ: Environment variables (default={})
+ frac: fractional intensity threshold
+ functional: apply to 4D fMRI data
+  mutually exclusive: functional, reduce_bias
+ mask: create binary mask image
+...
+
+Outputs
+-------
+out_file: path/name of skullstripped file
+...
+
+In [7]: bet = BET()
+In [8]: res = bet.run(in_file='struct.nii', mask=True)
+\end{SaveVerbatim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \headerbox{Uniform package interface}{name=interface,column=1,below=cad}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \UseVerbatim[fontsize=\relsize{-2.5}]{InterfaceVerb}
+}
+
+\begin{SaveVerbatim}{WorkflowVerbImport}
+from nipype.pipeline.engine import (Workflow,
+                                    Node, Mapnode)
+from nipype.interfaces.spm import Realign
+from nipype.interfaces.fsl import Smooth
+\end{SaveVerbatim}
+
+\begin{SaveVerbatim}{WorkflowVerbDefine}
+realign = Node(interface=Realign(), name='realign')
+smooth = MapNode(interface=Smooth(fwhm=6),
+                 iterfield=['in_file'], name='smooth')
+\end{SaveVerbatim}
+
+\begin{SaveVerbatim}{WorkflowVerbConnect}
+preproc = Workflow()
+preproc.connect(realign, 'realigned_files',
+                smooth, 'in_file')
+\end{SaveVerbatim}
+
+\begin{SaveVerbatim}{WorkflowVerbExecute}
+preproc.inputs.realign.in_files = ['run1.nii', 'run2.nii']
+preproc.base_dir = './workdir'
+preproc.run()
+\end{SaveVerbatim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \headerbox{Simple workflow construction}{name=workflow,column=2,below=cad}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \textbf{Import components}
+    \vspace{-0.3em}
+    \UseVerbatim[fontsize=\relsize{-2.5}]{WorkflowVerbImport}
+    \vspace{-0.3em}
+    \textbf{Define prcoesses}
+    \vspace{-0.3em}
+    \UseVerbatim[fontsize=\relsize{-2.5}]{WorkflowVerbDefine}
+    \vspace{-0.3em}
+    \textbf{Construct workflow}
+    \vspace{-0.3em}
+    \UseVerbatim[fontsize=\relsize{-2.5}]{WorkflowVerbConnect}
+    \vspace{-0.3em}
+    \textbf{Execute workflow}
+    \vspace{-0.3em}
+    \UseVerbatim[fontsize=\relsize{-2.5}]{WorkflowVerbExecute}
+}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Funding}{name=funding,column=1,span=2,above=bottom}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \smaller 
-  \hspace{1em}This work was supported in part by NIH grant EB ?? ... ADD
-  FUNDING INFO
+    \smaller This project was supported by NIH grants NIBIB R03 EB008673
+    (PI: Ghosh, Whitfield-Gabrieli), NIMH R01 MH081909 (PI: D'Esposito).
   }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{Results}{name=results,column=1,span=2,below=cad,above=funding}{
+  \headerbox{Hierarchical workflow visualization}{name=hierarchy,column=1,span=2,below=interface}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \begin{tikzpicture}[x=\linewidth,y=\linewidth]
-    %\path [use as bounding box] (-0.5,-0.5) rectangle(2.5,1.7);
-    \node{\includegraphics[width=\linewidth]{nipype_graph}};
+    %\draw[help lines] (0,0) grid (0.5,0.5);
+    \node at (-0.2,0) {\includegraphics[width=0.2\linewidth]{level1}};
+    \node at (0,0) {\includegraphics[width=0.3\linewidth]{firstlevel}};
+    \node at (0.42,-0.01) {\includegraphics[width=0.6\linewidth]{detailed_graph}};
+    \draw (0.13,-0.2) rectangle(0.71,0.2);
+    \draw (0.18, 0.185) node(preproc) {preproc};
+    \draw (-0.125,-0.2) rectangle(0.125,0.2);
+    \draw (-0.075, 0.185) node(firstlevel) {firstlevel};
  \end{tikzpicture}
-      \begin{multicols}{2}
-        Parallel execution was evaluated on two datasets. One comprising
-        an SPM workflow and one comprising a comparative workflow. SATRA
-        fill rest and timing results.\\
-   \end{multicols}\vspace{-1em}
-      \mbox{\hspace{0.3\linewidth}\rule{0.4\linewidth}{1pt}\hspace{0.3\linewidth}}\\
-\vspace{0.5em}
-  }
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{References}{name=references,column=0,above=bottom}{
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \smaller
-    \vspace{-0.4em}
-    \bibliographystyle{ieee}
-    \renewcommand{\section}[2]{\vskip 0.05em}
-    \bibliography{poster}
+ \vspace{-1em}
  }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{Conclusion}{name=conclusion,column=0,span=1,below=features,above=references}{
+  \headerbox{Parallel execution}{name=parallel,column=1,below=hierarchy}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    Nipype provides an environment for interactive manipulation of data
-    through a Python interface as well as for performing reproducible,
-    distributed analysis using the pipeline system and has a growing
-    developer and user community. Nipype has encouraged the scientific
-    exploration of different algorithms and associated parameters, eased
-    the development of workflows within and between packages and reduced
-    the learning curve associated with understanding the algorithms,
-    APIs and user interfaces of disparate packages. Future plans include
-    adding: interfaces to other analysis tools (e.g., AFNI, ANTS,
-    Slicer), a direct interface to the Nipy statistical analysis
-    framework, the ability to query data and workflows, a repository for
-    workflows (cf. myExperiment.org), and infrastructure for using
-    Nipype as a teaching tool.  }
+   \colouredcircle{100} \hspace{0.1em}Leverages IPython for distributed computation. 
+
+   \colouredcircle{100} \hspace{0.1em}Non-dependent processes can be executed in parallel.
+
+   \colouredcircle{100} \hspace{0.1em}No additional coding necessary.
+
+   \colouredcircle{100} \hspace{0.1em}Example. 
+
+   \hspace{0.5cm}\colouredcircle{100} \hspace{0.1em}SPM fMRI workflow on
+   79 subjects
+
+   \hspace{0.5cm}\colouredcircle{100} \hspace{0.1em}Typical runtime: 3 days
+
+   \hspace{0.5cm}\colouredcircle{100} \hspace{0.1em}Nipype runtime: 1.67
+   hrs on 40 cores.  }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \headerbox{Future plans}{name=future,column=2,below=hierarchy}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    
+    \colouredcircle{100} \hspace{0.1em}\textbf{More interfaces.} For
+    example, newer registration algorithms (e.g., ANTS - U. Penn, CVS -
+    MGH), integration with statistical tools in NiPy.
+
+    \colouredcircle{100} \hspace{0.1em}\textbf{Web interface.} A
+    graphical interface to define workflows.
+
+    \colouredcircle{100} \hspace{0.1em}\textbf{Workflow repository.}
+    Create a centralized location for version controlled workflows. 
+
+   \colouredcircle{100} \hspace{0.1em}\textbf{Additional modalities.}
+    Extend to PET, EEG/MEG, fNIRS.
+
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \headerbox{Sotware}{name=software,column=0,above=bottom}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+   \begin{tabular}{ll}
+     NIPY & \url{nipy.sourceforge.net}\\
+     Ipython & \url{ipython.scipy.org}\\
+     Scipy,Numpy & \url{scipy.org}\\
+     Networkx & \url{networkx.lanl.gov}\\
+     NeuroDebian & \url{neurodebian.net}\\
+     Traits & \url{www.enthought.com}
+   \end{tabular}
+
+ }
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \headerbox{Conclusion}{name=conclusion,column=0,span=1,below=features,above=software}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \colouredcircle{100} \hspace{0.1em}Provides an environment for
+    interactive manipulation of data through a Python interface as well
+    as for performing reproducible, distributed analysis using a
+    pipeline system.
+
+    \colouredcircle{100} \hspace{0.1em}Encourages scientific exploration
+    of different algorithms and associated parameters.
+
+    \colouredcircle{100} \hspace{0.1em}Simplifies the development of
+    workflows within and between packages.
+
+    \colouredcircle{100} \hspace{0.1em}Reduces the learning curve
+    associated with understanding the algorithms, APIs and user
+    interfaces of disparate packages.
+
+   \begin{tabular}{ll}
+      & \\
+      \textbf{C}ollaborative & Engages the community\\
+      \textbf{O}pensource & Available for all\\
+      \textbf{R}eproducible & Workflows are records\\
+      \textbf{E}fficient & Minimize redundancy
+    \end{tabular}
+}
 
 \end{poster}%
 \end{document}
