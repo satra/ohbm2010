@@ -276,6 +276,84 @@
 \vspace{0.5em}
   }
 
+\begin{SaveVerbatim}{IWorkflowImport}
+In [1]: from glob import glob
+In [2]: import os
+In [3]: from IPython.kernel import client
+In [4]: from IPython.kernel.client import StringTask
+In [5]: from nipype.interfaces.spm import Normalize
+\end{SaveVerbatim}
+
+\begin{SaveVerbatim}{IWorkflowSetup}
+In [6]: taskstr = """import os
+   ...: script_dir = 'script_dir/subj_%d'
+   ...: os.makedirs(script_dir)
+   ...: os.chdir(script_dir)
+   ...: result = node.run(source='%s')"""
+In [7]: node = Normalize(template='/templates/T2.nii')
+In [8]: tc = client.TaskClient()
+In [9]: fl = glob(os.path.abspath('SAD*.nii'))
+\end{SaveVerbatim}
+
+\begin{SaveVerbatim}{IWorkflowRun}
+In [10]: ids = [tc.run(StringTask(taskstr%(i,f),
+   ....:          push=dict(node=node),pull=['result']))
+   ....:        for i, f in enumerate(fl)]
+\end{SaveVerbatim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \headerbox{Direct distribution}{name=iworkflow2,column=2,below=nipype}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \textbf{Import components}
+    \vspace{-0.3em}
+    \UseVerbatim[fontsize=\relsize{-2.5}]{IWorkflowImport}
+    \vspace{-0.3em}
+    \textbf{Setup variables}
+    \vspace{-0.3em}
+    \UseVerbatim[fontsize=\relsize{-2.5}]{IWorkflowSetup}
+    \vspace{-0.3em}
+    \textbf{Run in parallel}
+    \vspace{-0.3em}
+    \UseVerbatim[fontsize=\relsize{-2.5}]{IWorkflowRun}
+}
+
+\begin{SaveVerbatim}{IWorkflow1Import}
+In [1]: from glob import glob
+In [2]: import os
+In [3]: from nipype.interfaces.spm import Normalize
+In [4]: from nipype.pipeline.engine import Workflow, Node
+\end{SaveVerbatim}
+
+\begin{SaveVerbatim}{IWorkflow1Setup}
+In [5]: fl = glob(os.path.abspath('SAD*.nii'))
+In [6]: normalize = Node(Normalize(template='/templates/T2.nii'),
+   ...:                  name='normalize')
+In [7]: normalize.iterables = ('source', fl)
+In [8]: normworkflow = Workflow(name='normalizefa',
+   ...:                         base_dir='./norm_workdir')
+In [9]: normworkflow.add_nodes([normalize])
+\end{SaveVerbatim}
+
+\begin{SaveVerbatim}{IWorkflow1Run}
+In [10]: normworkflow.run()
+\end{SaveVerbatim}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \headerbox{Indirect distribution}{name=iworkflow1,column=1,below=nipype}{
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \textbf{Import components}
+    \vspace{-0.3em}
+    \UseVerbatim[fontsize=\relsize{-2.5}]{IWorkflow1Import}
+    \vspace{-0.3em}
+    \textbf{Setup variables}
+    \vspace{-0.3em}
+    \UseVerbatim[fontsize=\relsize{-2.5}]{IWorkflow1Setup}
+    \vspace{-0.3em}
+    \textbf{Run in parallel}
+    \vspace{-0.3em}
+    \UseVerbatim[fontsize=\relsize{-2.5}]{IWorkflow1Run}
+}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Funding}{name=funding,column=1,span=2,above=bottom}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -284,7 +362,7 @@
   }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{Results}{name=results,column=1,span=2,below=nipype,above=funding}{
+  \headerbox{Results}{name=results,column=1,span=2,below=iworkflow2,above=funding}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \begin{tikzpicture}[x=\linewidth,y=\linewidth]
     %\path [use as bounding box] (-0.5,-0.5) rectangle(2.5,1.7);
