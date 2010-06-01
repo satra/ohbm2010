@@ -229,34 +229,24 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Nipype}{name=nipype,column=1,row=0}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-    Current neuroimaging software offer users an incredible opportunity
-    to analyze their data in different ways, with different underlying
-    assumptions. However, this has resulted in a heterogeneous
-    collection of specialized applications without transparent
-    interoperability or a uniform operating interface.
-
-    Nipype, an open-source, community-developed initiative under the
-    umbrella of Nipy, is a Python project that solves these issues by
-    providing a uniform interface to existing neuroimaging software and
-    by facilitating interaction between these packages within a single
-    workflow. 
-
-    Nipype provides an environment that encourages interactive
-    exploration of algorithms from different packages (e.g., SPM, FSL,
-    FreeSurfer), eases the design of workflows within and between
-    packages, and reduces the learning curve necessary to use different
-    packages. 
-
-    Nipype is creating a collaborative platform for
-    neuroimaging software development in a high-level language and
-    addressing limitations of existing pipeline systems. Nipype is
-    accessible via NITRC (http://www.nitrc.org/projects/nipype/) and is
-    written in Python, a free high-level language with extensive
-    scientific computation capabilities that is accessible to both
-    programmers and non-programmers.
-
- \vspace{0.5em}
+    \begin{list}{\labelitemi}{\leftmargin=1em}
+      \compresslist
+    \item \textbf{Software explosion.} Current neuroimaging software
+      offer users various ways to analyze their data. However, this has
+      resulted in a heterogeneous collection of specialized applications
+      without transparent interoperability or a uniform operating
+      interface.
+   \item \textbf{Uniform interface.} Nipype, an open-source,
+      community-developed initiative under the umbrella of Nipy
+      \cite{bret.nipy.09}, solves these issues by providing a uniform
+      interface to existing neuroimaging software and by facilitating
+      interaction between these packages using workflows.
+   \item \textbf{Workflow-based analysis.} Nipype provides an
+      environment that not only encourages interactive exploration of
+      algorithms, but simplifies the design and execution of
+      neuroimaging analysis workflows.
+  \end{list}
+\vspace{-0.3em}
   }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -297,7 +287,7 @@ In [9]: fl = glob(os.path.abspath('SAD*.nii'))
 
 \begin{SaveVerbatim}{IWorkflowRun}
 In [10]: ids = [tc.run(StringTask(taskstr%(i,f),
-   ....:          push=dict(node=node),pull=['result']))
+   ....:        push=dict(node=node),pull=['result']))
    ....:        for i, f in enumerate(fl)]
 \end{SaveVerbatim}
 
@@ -321,16 +311,18 @@ In [10]: ids = [tc.run(StringTask(taskstr%(i,f),
 In [1]: from glob import glob
 In [2]: import os
 In [3]: from nipype.interfaces.spm import Normalize
-In [4]: from nipype.pipeline.engine import Workflow, Node
+In [4]: from nipype.pipeline.engine import (Workflow, 
+                                            Node)
 \end{SaveVerbatim}
 
 \begin{SaveVerbatim}{IWorkflow1Setup}
 In [5]: fl = glob(os.path.abspath('SAD*.nii'))
-In [6]: normalize = Node(Normalize(template='/templates/T2.nii'),
+In [6]: normalize = Node(Normalize(template= \
+                                '/templates/T2.nii'),
    ...:                  name='normalize')
 In [7]: normalize.iterables = ('source', fl)
 In [8]: normworkflow = Workflow(name='normalizefa',
-   ...:                         base_dir='./norm_workdir')
+   ...:                    base_dir='./norm_workdir')
 In [9]: normworkflow.add_nodes([normalize])
 \end{SaveVerbatim}
 
@@ -410,16 +402,15 @@ In [10]: normworkflow.run()
       \compresslist
     \item \textbf{Integration.} We have developed a practical
       integration of IPython's parallel and distributed computing
-      capabilities into Nipype's pipeline execution machinery. 
-   \item \textbf{Codeless parallelization.} This provides an easy to
+      capabilities into Nipype's pipeline execution machinery.
+    \item \textbf{Codeless parallelization.} This provides an easy to
       use system for parallelizing analysis tasks with minimal effort
-      and without the requirement for explicit parallel
-      programming. 
-   \item \textbf{Multi-package support.} Currently, one can execute
+      and without the requirement for explicit parallel programming.
+    \item \textbf{Multi-package support.} Currently, one can execute
       SPM, FSL and a variety of FreeSurfer functions in parallel using
       this system on variety of different distributed computing
-      architectures as long as they share a common file-system and have
-      all underlying tools installed. 
+      architectures that share a common file-system and have these
+      pacakges installed.
     \end{list}
       
 }
