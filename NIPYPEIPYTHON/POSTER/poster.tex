@@ -148,10 +148,17 @@
   % Authors
   {\sf %Sans Serif
   % Serif
-  Satrajit Ghosh$^1$, Brian Granger$^2$, Fernando Perez$^3$\\
+  Satrajit Ghosh$^1$, Brian Granger$^2$, Fernando P\'{e}rez$^3$\\
   \small\sf$^1$MIT, Cambridge, MA $^2$California Polytechnic State
   University, San Luis Obispo, CA $^3$University of California,
-  Berkeley, CA}
+  Berkeley, CA
+
+% XXX - fperez: I thought it might be good to put visible urls up top, but they
+%  look kind of ugly.  Commented out for now...
+%  \large{Nipype: \texttt{http://nipy.sf.net/nipype},
+%  IPython: \texttt{http://ipython.scipy.org}. }
+
+  }
 
 
   % University logo
@@ -170,6 +177,8 @@
   % Width of left inset image
      \setlength{\leftimgwidth}{0.78em+8.0em}
 
+
+     
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Now define the boxes that make up the poster
 %%%---------------------------------------------------------------------------
@@ -223,6 +232,7 @@
         interfaces (currently supports SPM, FSL, FreeSurfer)
       \item Automatic load balancing across cluster.
       \item Multiple protocols for parallel communication.
+      \item Open Source: BSD Licensed.
    \end{list}
    \vspace{-0.5em}}
 
@@ -252,14 +262,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{IPython: Interactive Python}{name=ipython,column=2,row=0}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    An \textbf{enhanced interactive Python shell} and \textbf{an
-      architecture for interactive parallel computing}.
-
-    IPython provides high-level components to express different parallel
-    workflows.  An \emph{IPython Cluster} consists of one or more
-    \emph{engines} and one \emph{controller}; code and data can be sent
-    between them and multiple \emph{clients} can (even simultaneously)
-    interact:
+    An \textbf{enhanced interactive shell} and \textbf{components for
+      interactive parallel computing}.
 
     \begin{center}
       \begin{tikzpicture}[x=\linewidth,y=\linewidth]
@@ -268,6 +272,17 @@
       \end{tikzpicture}
     \end{center}
 
+    \begin{list}{\labelitemi}{\leftmargin=1em}
+      \compresslist
+    \item \textbf{Multiengine interface} Direct control of code execution on
+      any set of engines.
+    \item \textbf{Task interface} Automatically load-balanced task execution.
+    \item \textbf{One cluster, many clients} Multiple clients can interact
+      simultaneously with one cluster.
+    \item \textbf{Flexible} multicore machine or network.
+   \end{list}
+
+    
 \vspace{-0.3em}
   }
 
@@ -430,10 +445,10 @@ In [10]: normworkflow.run()
       execution machinery.
     \item \textbf{Codeless parallelization.} Nipype interfaces can be
       parallelized without explicit parallel programming.
-    \item \textbf{Multi-package support.} Current support for a variety
-      of SPM, FSL and FreeSurfer functions. Available on different
-      distributed computing architectures that share a common
-      file-system and have these pacakges installed.
+    \item \textbf{Multi-package support.} Current support for many SPM, FSL and
+      FreeSurfer functions. Available on different distributed computing
+      architectures with a common file-system and have these pacakges
+      installed.
     \end{list}
     \vspace{-0.3em}
 }
