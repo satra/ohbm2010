@@ -365,13 +365,24 @@ In [10]: normworkflow.run()
   \headerbox{Complex workflows}{name=results,column=1,span=2,below=iworkflow2,above=funding}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \begin{tikzpicture}[x=\linewidth,y=\linewidth]
-      \node{\includegraphics[width=\linewidth]{nipype_graph}};
+      \node{\includegraphics[width=0.8\linewidth]{nipype_graph}};
     \end{tikzpicture}
     \begin{multicols}{2}
-      Parallel execution was evaluated on two datasets. One comprising
-      an SPM workflow and one comprising a comparative workflow. SATRA
-      fill rest and timing results.\\
-    \end{multicols}\vspace{-1em}
+     \centering
+     Comparative workflow (4 core machine).
+     \begin{tabular}{lll}
+        serial & 1 subject & 41min\\
+        parallel & 1 subject & 25min\\
+        parallel & 2 subject & 41min
+      \end{tabular}
+
+     SPM workflow (40 core cluster)
+     \begin{tabular}{lll}
+        serial & 1 subject & 41min\\
+        parallel & 1 subject & 25min\\
+        parallel & 69 subject & 1 hr 40 min
+      \end{tabular}
+   \end{multicols}\vspace{-1em}
   }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
