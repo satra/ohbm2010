@@ -128,7 +128,7 @@
   textborder=none, %rectangle,
   textfont=\sf, %Sans Serif
  % Format of text header
-  eyecatcher=no,
+  eyecatcher=yes,
   headerborder=none,
   headerheight=0.08\textheight,
   headershape=rectangle,
@@ -140,7 +140,8 @@
   linewidth=2pt
   }
  % Eye Catcher
-  {\includegraphics[width=1em]{nipylogo}} % No eye catcher for this poster. (eyecatcher=no above). If an eye catcher is present, the title is centered between eye-catcher and logo.
+  %{\includegraphics[width=1em]{nipylogo}} % No eye catcher for this poster. (eyecatcher=no above). If an eye catcher is present, the title is centered between eye-catcher and logo.
+{}
   % Title
   {\sf %Sans Serif
   %\bf% Serif
@@ -148,15 +149,14 @@
   % Authors
   {\sf %Sans Serif
   % Serif
-  Satrajit Ghosh$^1$, Brian Granger$^2$, Fernando P\'{e}rez$^3$\\
+  Satrajit Ghosh$^1$, Brian Granger$^2$, Fernando P\'{e}rez$^3$\\\vspace{0.3em}
   \small\sf$^1$MIT, Cambridge, MA $^2$California Polytechnic State
   University, San Luis Obispo, CA $^3$University of California,
-  Berkeley, CA
+  Berkeley, CA\\\vspace{0.3em}
 
 % XXX - fperez: I thought it might be good to put visible urls up top, but they
 %  look kind of ugly.  Commented out for now...
-%  \large{Nipype: \texttt{http://nipy.sf.net/nipype},
-%  IPython: \texttt{http://ipython.scipy.org}. }
+  \large{Nipype: \url{http://nipy.sf.net/nipype} IPython: \url{http://ipython.scipy.org} }
 
   }
 
@@ -206,7 +206,7 @@
       requires sophisticated algorithms but computational infrastructure
       to support their use with ease, efficiency, reliability and
       reproducibility.
-   \item \textbf{Limited infrastructure} While existing analysis
+   \item \textbf{Limited infrastructure.} While existing analysis
       packages provide excellent tools, they often constrain users to
       specific workflows and environments. Furthermore, very few of the
       available neuroimaging tools take advantage of the growing number
@@ -274,12 +274,12 @@
 
     \begin{list}{\labelitemi}{\leftmargin=1em}
       \compresslist
-    \item \textbf{Multiengine interface} Direct control of code execution on
+    \item \textbf{Multiengine interface.} Direct control of code execution on
       any set of engines.
-    \item \textbf{Task interface} Automatically load-balanced task execution.
-    \item \textbf{One cluster, many clients} Multiple clients can interact
+    \item \textbf{Task interface.} Automatically load-balanced task execution.
+    \item \textbf{One cluster, many clients.} Multiple clients can interact
       simultaneously with one cluster.
-    \item \textbf{Flexible} multicore machine or network.
+    \item \textbf{Flexible.} multicore machine or network.
    \end{list}
 
     
@@ -389,20 +389,20 @@ In [10]: normworkflow.run()
 
       (4 core single machine)
        \begin{tabular}{lll}
-          serial & 1 subject & 41min\\
+          Serial & 1 Subject & 41min\\
           \hline
-          parallel & 1 subject & 25min\\
-          parallel & 2 subject & 41min
+          Parallel & 1 Subject & 25min\\
+          Parallel & 2 Subjects & 41min
         \end{tabular}
 
         SPM workflow 
 
         (40 core cluster)
       \begin{tabular}{lll}
-        serial & 1 subject & 32min\\
+        Serial & 1 Subject & 32min\\
         \hline
-        parallel & 1 subject & 30min\\
-        parallel & 69 subject & 1 hr 40 min
+        Parallel & 1 Subject & 30min\\
+        Parallel & 69 Subjects & 1 hr 40 min
       \end{tabular}
       \end{center}
    \end{multicols}\vspace{-1em}
