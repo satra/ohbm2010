@@ -207,10 +207,8 @@
       pipelines that the open source Nipype \cite{ghos.python-based.09}
       project has developed by integrating with IPython's
       \cite{pere.ipython.07}.
-   \item \textbf{Parallel computing.} By using IPython's high-level
-      facilities for distributed computing, Nipype can optimally execute
-      any parallelizable analysis pipeline.  \vspace{0.3em}
-    \end{list}
+   \end{list}
+   \vspace{-0.3em}
 }
 
 
@@ -219,12 +217,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \begin{list}{\labelitemi}{\leftmargin=1em}
       \compresslist
-      \item Parallel execution of workflows
-      \item No additional coding for parallel execution
-      \item Supports SPM, FSL, FreeSurfer
-      \item Automatic load balancing across cluster
-    \end{list}
-  }
+      \item Parallel execution of complex workflows.
+      \item No additional user code required for parallel execution.
+      \item Embarassingly parallel execution supported for wrapped
+        interface (currently supports SPM, FSL, FreeSurfer)
+      \item Automatic load balancing across cluster.
+      \item Multiple protocols for parallel communication.
+   \end{list}
+   \vspace{-0.3em}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Nipype}{name=nipype,column=1,row=0}{
@@ -245,8 +245,8 @@
       environment that not only encourages interactive exploration of
       algorithms, but simplifies the design and execution of
       neuroimaging analysis workflows.
-  \end{list}
-\vspace{-0.3em}
+    \end{list}
+    \vspace{-0.3em}
   }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -354,25 +354,22 @@ In [10]: normworkflow.run()
   }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{Results}{name=results,column=1,span=2,below=iworkflow2,above=funding}{
+  \headerbox{Complex workflows}{name=results,column=1,span=2,below=iworkflow2,above=funding}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \begin{tikzpicture}[x=\linewidth,y=\linewidth]
-    %\path [use as bounding box] (-0.5,-0.5) rectangle(2.5,1.7);
-    \node{\includegraphics[width=\linewidth]{nipype_graph}};
- \end{tikzpicture}
-      \begin{multicols}{2}
-        Parallel execution was evaluated on two datasets. One comprising
-        an SPM workflow and one comprising a comparative workflow. SATRA
-        fill rest and timing results.\\
-   \end{multicols}\vspace{-1em}
-      \mbox{\hspace{0.3\linewidth}\rule{0.4\linewidth}{1pt}\hspace{0.3\linewidth}}\\
-\vspace{0.5em}
+    \begin{tikzpicture}[x=\linewidth,y=\linewidth]
+      \node{\includegraphics[width=\linewidth]{nipype_graph}};
+    \end{tikzpicture}
+    \begin{multicols}{2}
+      Parallel execution was evaluated on two datasets. One comprising
+      an SPM workflow and one comprising a comparative workflow. SATRA
+      fill rest and timing results.\\
+    \end{multicols}\vspace{-1em}
   }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{References}{name=references,column=0,above=bottom}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    \smaller
+    \footnotesize
     \vspace{-0.4em}
     \bibliographystyle{ieee}
     \renewcommand{\section}[2]{\vskip 0.05em}
@@ -393,6 +390,7 @@ In [10]: normworkflow.run()
       on their attributes (e.g., OS specificity, software availability)
       or user requirements (e.g., time, funding).
    \end{list}
+   \vspace{-0.3em}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -400,19 +398,17 @@ In [10]: normworkflow.run()
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \begin{list}{\labelitemi}{\leftmargin=1em}
       \compresslist
-    \item \textbf{Integration.} We have developed a practical
-      integration of IPython's parallel and distributed computing
-      capabilities into Nipype's pipeline execution machinery.
-    \item \textbf{Codeless parallelization.} This provides an easy to
-      use system for parallelizing analysis tasks with minimal effort
-      and without the requirement for explicit parallel programming.
-    \item \textbf{Multi-package support.} Currently, one can execute
-      SPM, FSL and a variety of FreeSurfer functions in parallel using
-      this system on variety of different distributed computing
-      architectures that share a common file-system and have these
-      pacakges installed.
+    \item \textbf{Integration.} Integrated IPython's parallel and
+      distributed computing capabilities into Nipype's pipeline
+      execution machinery.
+    \item \textbf{Codeless parallelization.} Nipype interfaces can be
+      parallelized without explicit parallel programming.
+    \item \textbf{Multi-package support.} Current support for a variety
+      of SPM, FSL and FreeSurfer functions. Available on different
+      distributed computing architectures that share a common
+      file-system and have these pacakges installed.
     \end{list}
-      
+    \vspace{-0.3em}
 }
 
 \end{poster}%
