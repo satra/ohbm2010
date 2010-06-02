@@ -220,11 +220,11 @@
       \item Parallel execution of complex workflows.
       \item No additional user code required for parallel execution.
       \item Embarassingly parallel execution supported for wrapped
-        interface (currently supports SPM, FSL, FreeSurfer)
+        interfaces (currently supports SPM, FSL, FreeSurfer)
       \item Automatic load balancing across cluster.
       \item Multiple protocols for parallel communication.
    \end{list}
-   \vspace{-0.3em}}
+   \vspace{-0.5em}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{Nipype}{name=nipype,column=1,row=0}{
@@ -252,14 +252,14 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \headerbox{IPython: Interactive Python}{name=ipython,column=2,row=0}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    An \textbf{enhanced interactive Python shell} and \textbf{an architecture
-      for interactive parallel computing}.
+    An \textbf{enhanced interactive Python shell} and \textbf{an
+      architecture for interactive parallel computing}.
 
     IPython provides high-level components to express different parallel
     workflows.  An \emph{IPython Cluster} consists of one or more
-    \emph{engines} and one \emph{controller}; code and data can be sent between
-    them and multiple \emph{clients} can (even simultaneously) interact:
-
+    \emph{engines} and one \emph{controller}; code and data can be sent
+    between them and multiple \emph{clients} can (even simultaneously)
+    interact:
 
     \begin{center}
       \begin{tikzpicture}[x=\linewidth,y=\linewidth]
@@ -268,7 +268,7 @@
       \end{tikzpicture}
     \end{center}
 
-\vspace{0.5em}
+\vspace{-0.3em}
   }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -365,23 +365,31 @@ In [10]: normworkflow.run()
   \headerbox{Complex workflows}{name=results,column=1,span=2,below=iworkflow2,above=funding}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
     \begin{tikzpicture}[x=\linewidth,y=\linewidth]
-      \node{\includegraphics[width=0.8\linewidth]{nipype_graph}};
+      \node{\includegraphics[width=0.6\linewidth]{nipype_graph}};
+      \node at (0.5,0) {\includegraphics[width=0.4\linewidth]{nipype_graph_spm}};
     \end{tikzpicture}
     \begin{multicols}{2}
-     \centering
-     Comparative workflow (4 core machine).
-     \begin{tabular}{lll}
-        serial & 1 subject & 41min\\
-        parallel & 1 subject & 25min\\
-        parallel & 2 subject & 41min
-      \end{tabular}
+      \begin{center}
+      Smoothing comparison workflow 
 
-     SPM workflow (40 core cluster)
-     \begin{tabular}{lll}
-        serial & 1 subject & 41min\\
-        parallel & 1 subject & 25min\\
+      (4 core single machine)
+       \begin{tabular}{lll}
+          serial & 1 subject & 41min\\
+          \hline
+          parallel & 1 subject & 25min\\
+          parallel & 2 subject & 41min
+        \end{tabular}
+
+        SPM workflow 
+
+        (40 core cluster)
+      \begin{tabular}{lll}
+        serial & 1 subject & 32min\\
+        \hline
+        parallel & 1 subject & 30min\\
         parallel & 69 subject & 1 hr 40 min
       \end{tabular}
+      \end{center}
    \end{multicols}\vspace{-1em}
   }
 
@@ -409,7 +417,7 @@ In [10]: normworkflow.run()
       on their attributes (e.g., OS specificity, software availability)
       or user requirements (e.g., time, funding).
    \end{list}
-   \vspace{-0.3em}
+   \vspace{-1em}
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
