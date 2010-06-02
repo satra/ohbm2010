@@ -250,22 +250,30 @@
   }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-  \headerbox{IPython}{name=ipython,column=2,row=0}{
+  \headerbox{IPython: Interactive Python}{name=ipython,column=2,row=0}{
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-    IPython SUMMARY here.
+    An \textbf{enhanced interactive Python shell} and \textbf{an architecture
+      for interactive parallel computing}.
 
-    The goal of IPython is to create a comprehensive environment for
-    interactive and exploratory computing. To support, this goal,
-    IPython has two main components:
+    IPython provides high-level components to express different parallel
+    workflows.  An \emph{IPython Cluster} consists of one or more
+    \emph{engines} and one \emph{controller}; code and data can be sent between
+    them and multiple \emph{clients} can (even simultaneously) interact:
 
-    \begin{itemize}
-      \compresslist
-      \item An enhanced interactive Python shell.
-      \item An architecture for interactive parallel computing.  
-    \end{itemize}
+
+    \begin{center}
+      \begin{tikzpicture}[x=\linewidth,y=\linewidth]
+        % \path [use as bounding box] (-0.5,-0.5) rectangle(2.5,1.7);
+        \node{\includegraphics[width=2in]{ipython_dist_architecture}};
+      \end{tikzpicture}
+    \end{center}
+
 \vspace{0.5em}
   }
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Setup verbatim environments to create code boxes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{SaveVerbatim}{IWorkflowImport}
 In [1]: from glob import glob
 In [2]: import os
